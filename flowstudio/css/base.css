@@ -1,0 +1,16 @@
+/* =========================================================
+   ARCHIVO: base.css
+   CONTENIDO: Estilos base y normalización de elementos HTML.
+              Incluye tipografía, botones, campos y scrollbars.
+   DEPENDENCIAS: ninguna
+   ========================================================= */
+*,*::before,*::after{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--text);
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size:14px;-webkit-font-smoothing:antialiased;overflow:hidden;transition:background .3s,color .3s}
+button{font-family:inherit;font-size:inherit;color:inherit;cursor:pointer;border:none;background:none}
+input,select{font-family:inherit;font-size:inherit;color:inherit}
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-thumb{background:rgba(128,128,140,.35);border-radius:20px;border:3px solid transparent;background-clip:content-box}
+::-webkit-scrollbar-thumb:hover{background:rgba(128,128,140,.55);background-clip:content-box;border:3px solid transparent}

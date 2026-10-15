@@ -1,0 +1,15 @@
+/* =========================================================
+   ARCHIVO: main.css
+   CONTENIDO: Punto de entrada CSS. Solo contiene @import
+              a los demás archivos en el orden correcto.
+   DEPENDENCIAS: todos los CSS del proyecto
+   ========================================================= */
+@import 'variables.css';
+@import 'base.css';
+@import 'layout.css';
+@import 'components.css';
+@import 'tree.css';
+@import 'nodes.css';
+@import 'screens.css';
+@import 'misc.css';
+@import 'inspector.css';

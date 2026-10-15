@@ -1,0 +1,43 @@
+/* =========================================================
+   ARCHIVO: screens.css
+   CONTENIDO: Estilos de la vista de pantallas y sus
+              dispositivos, filas y navegación.
+   DEPENDENCIAS: ninguna
+   ========================================================= */
+/* SCREENS */
+.screens-stage{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  padding:24px;overflow:auto}
+.device{border-radius:38px;background:#1c1c1e;padding:12px;box-shadow:var(--shadow-l);
+  transform-origin:top left;flex:0 0 auto;position:relative}
+.device.phone{border-radius:44px;padding:11px}
+.device.tablet{border-radius:26px;padding:14px}
+.device.desktop{border-radius:14px;padding:10px;background:#2c2c2e}
+.device-screen{width:100%;height:100%;border-radius:32px;overflow:hidden;background:var(--panel);
+  display:flex;flex-direction:column;position:relative}
+.device.tablet .device-screen{border-radius:14px}
+.device.desktop .device-screen{border-radius:8px}
+.device.phone .device-screen::before{content:"";position:absolute;top:0;left:50%;
+  transform:translateX(-50%);width:120px;height:26px;background:#1c1c1e;
+  border-radius:0 0 16px 16px;z-index:5}
+.scr-top{flex:0 0 auto;padding:14px 18px 10px;display:flex;align-items:center;gap:10px;
+  border-bottom:1px solid var(--border);background:var(--panel)}
+.device.phone .scr-top{padding-top:34px}
+.scr-back{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;
+  font-size:15px;color:var(--accent);transition:.12s}
+.scr-back:hover{background:var(--accent-soft)}
+.scr-title{font-weight:650;font-size:15px;letter-spacing:-.2px;flex:1;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.scr-body{flex:1;overflow:auto;padding:12px 14px 20px}
+.scr-row{display:flex;align-items:center;gap:12px;padding:12px;border-radius:12px;
+  cursor:pointer;transition:.14s;border:1px solid transparent}
+.scr-row:hover{background:var(--hover);border-color:var(--border)}
+.scr-row.sel{background:var(--sel);border-color:var(--accent)}
+.scr-ic{width:38px;height:38px;flex:0 0 38px;border-radius:11px;display:grid;place-items:center;
+  font-size:17px;background:color-mix(in srgb,var(--c) 15%,transparent);
+  border:1px solid color-mix(in srgb,var(--c) 28%,transparent)}
+.scr-tx{flex:1;min-width:0}
+.scr-tx b{display:block;font-size:13.5px;font-weight:560;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.scr-tx small{font-size:11px;color:var(--text-3)}
+.scr-chev{color:var(--text-3);font-size:16px;opacity:.6}
+.scr-empty{padding:40px 20px;text-align:center;color:var(--text-3);font-size:12.5px}
+.scr-empty .big{font-size:36px;margin-bottom:10px;opacity:.5}

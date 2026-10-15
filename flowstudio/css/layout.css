@@ -1,0 +1,70 @@
+/* =========================================================
+   ARCHIVO: layout.css
+   CONTENIDO: Estructura general de la aplicación, topbar,
+              paneles, layout y resizers.
+   DEPENDENCIAS: ninguna
+   ========================================================= */
+/* TOPBAR */
+.topbar{height:60px;display:flex;align-items:center;gap:12px;padding:0 14px;
+  background:color-mix(in srgb,var(--panel) 78%,transparent);
+  backdrop-filter:saturate(180%) blur(24px);-webkit-backdrop-filter:saturate(180%) blur(24px);
+  border-bottom:1px solid var(--border);position:relative;z-index:60}
+.brand{display:flex;align-items:center;gap:10px;padding-right:8px}
+.logo{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;font-size:17px;
+  background:linear-gradient(150deg,#0a84ff,#5e5ce6 55%,#bf5af2);color:#fff;
+  box-shadow:0 4px 14px rgba(10,132,255,.35)}
+.brand-t{font-weight:650;font-size:14px;letter-spacing:-.2px;line-height:1.1}
+.brand-s{font-size:11px;color:var(--text-3);line-height:1.2;margin-top:2px}
+.spacer{flex:1}
+.proj-name{height:34px;width:180px;border-radius:9px;border:1px solid transparent;
+  background:transparent;padding:0 10px;font-weight:560;outline:none;transition:.15s}
+.proj-name:hover{background:var(--hover)}
+.proj-name:focus{background:var(--bg-2);border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+
+/* LAYOUT */
+.layout{display:flex;height:calc(100vh - 60px);overflow:hidden}
+.panel{display:flex;flex-direction:column;min-width:0;overflow:hidden}
+.panel.left{width:390px;flex:0 0 auto;background:var(--panel);border-right:1px solid var(--border)}
+.panel.right{flex:1;background:var(--bg-2)}
+.resizer{width:5px;cursor:col-resize;background:transparent;flex:0 0 5px;
+  margin-left:-5px;z-index:10;transition:background .2s}
+.resizer:hover,.resizer.active{background:var(--accent-soft)}
+.panel-head{height:46px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 12px 0 16px;border-bottom:1px solid var(--border);flex:0 0 auto}
+.panel-head>span{font-weight:620;font-size:12.5px;letter-spacing:.2px}
+.panel-tools{display:flex;gap:2px}
+.panel-tools button{width:28px;height:28px;border-radius:7px;display:grid;place-items:center;
+  color:var(--text-2);font-size:14px;transition:.12s}
+.panel-tools button:hover{background:var(--hover);color:var(--text)}
+.panel-foot{flex:0 0 auto;border-top:1px solid var(--border);padding:9px 12px;
+  display:flex;align-items:center;gap:8px;background:var(--panel-2)}
+.panel-foot label{font-size:11px;color:var(--text-3);font-weight:600;
+  letter-spacing:.3px;text-transform:uppercase}
+.panel-foot select{flex:1;height:30px;border-radius:8px;border:1px solid var(--border);
+  background:var(--panel);padding:0 8px;outline:none;font-size:12.5px}
+.panel-foot select:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+
+/* RIGHT */
+.view-head{height:50px;display:flex;align-items:center;justify-content:space-between;gap:10px;
+  padding:0 14px;border-bottom:1px solid var(--border);flex:0 0 auto;background:var(--panel)}
+.tabs{display:flex;gap:2px;background:var(--bg);padding:3px;border-radius:10px;border:1px solid var(--border)}
+.tab{height:28px;padding:0 12px;border-radius:7px;font-size:12.5px;font-weight:550;
+  color:var(--text-2);transition:.15s;white-space:nowrap}
+.tab:hover{color:var(--text)}
+.tab.active{background:var(--panel);color:var(--text);box-shadow:var(--shadow-s)}
+[data-theme="dark"] .tab.active{background:#3a3a3c}
+.view-extra{display:flex;align-items:center;gap:8px}
+.view-body{flex:1;overflow:auto;position:relative}
+.seg{display:flex;gap:2px;background:var(--bg);padding:3px;border-radius:9px;border:1px solid var(--border)}
+.seg button{height:26px;padding:0 11px;border-radius:6px;font-size:12px;font-weight:540;
+  color:var(--text-2);transition:.15s}
+.seg button.on{background:var(--panel);color:var(--text);box-shadow:var(--shadow-s)}
+[data-theme="dark"] .seg button.on{background:#3a3a3c}
+.zoom{display:flex;align-items:center;gap:3px;background:var(--bg);padding:3px;
+  border-radius:9px;border:1px solid var(--border)}
+.zoom button{width:26px;height:26px;border-radius:6px;display:grid;place-items:center;
+  color:var(--text-2);font-size:14px;transition:.12s}
+.zoom button:hover{background:var(--panel);color:var(--text)}
+.zoom span{font-size:11.5px;color:var(--text-2);min-width:38px;text-align:center;
+  font-variant-numeric:tabular-nums}
+.zoom .mini{width:auto;padding:0 9px;font-size:11.5px;font-weight:550}

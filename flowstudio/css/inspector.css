@@ -1,0 +1,32 @@
+/* =========================================================
+   ARCHIVO: inspector.css
+   CONTENIDO: Estilos del panel inspector, sus estadísticas,
+              secciones y narrativa del proyecto.
+   DEPENDENCIAS: ninguna
+   ========================================================= */
+.panel.inspector{width:340px;flex:0 0 auto;background:var(--panel);
+  border-left:1px solid var(--border);display:flex;flex-direction:column;min-width:0}
+.panel.inspector.hidden{display:none}
+.resizer.hidden{display:none}
+.inspector-scroll{flex:1;overflow:auto;padding:18px 20px 80px}
+.insp-cat{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.5px;
+  text-transform:uppercase;padding:3px 10px;border-radius:20px;background:var(--accent-soft);
+  color:var(--accent);border:1px solid color-mix(in srgb,var(--accent) 30%,transparent);
+  margin-bottom:10px}
+.insp-title{margin:6px 0 4px;font-size:20px;font-weight:700;letter-spacing:-.4px;line-height:1.2}
+.insp-tpl{font-size:12.5px;color:var(--text-2);margin-bottom:10px;font-weight:550}
+.insp-desc{font-size:13px;line-height:1.55;color:var(--text-2);margin:0}
+.insp-sec{margin-top:22px}
+.insp-h{font-size:10.5px;font-weight:700;letter-spacing:.7px;text-transform:uppercase;
+  color:var(--text-3);margin-bottom:10px}
+.insp-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.insp-stat{background:var(--bg);border:1px solid var(--border);border-radius:10px;
+  padding:10px 6px;text-align:center}
+.insp-stat span{display:block;font-size:9.5px;color:var(--text-3);font-weight:700;
+  margin-bottom:4px;text-transform:uppercase;letter-spacing:.4px}
+.insp-stat b{font-size:18px;font-weight:700}
+.insp-ul{list-style:none;padding:0;margin:0;font-size:12.5px;line-height:1.7}
+.insp-ul ul{margin-left:14px;border-left:1.5px solid var(--border);padding-left:12px;margin-top:2px}
+.insp-ul li{color:var(--text-2)}
+.insp-ul b{color:var(--text);font-weight:600}
+.insp-desc-txt{color:var(--text-3);font-style:italic;font-size:11px}

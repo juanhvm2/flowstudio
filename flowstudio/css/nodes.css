@@ -1,0 +1,71 @@
+/* =========================================================
+   ARCHIVO: nodes.css
+   CONTENIDO: Estilos de nodos, grafo, pines, conexiones,
+              zoom y desplazamiento del canvas.
+   DEPENDENCIAS: ninguna
+   ========================================================= */
+/* GRAPH */
+.graph-scroll{position:absolute;inset:0;overflow:auto;padding:26px}
+.graph-zoom{position:relative}
+.graph-canvas{position:relative;transform-origin:0 0}
+.graph-canvas svg{position:absolute;inset:0;overflow:visible;color:var(--text-3);pointer-events:none}
+.gnode{position:absolute;display:flex;align-items:center;gap:9px;padding:0 12px;
+  background:var(--panel);border:1px solid var(--border);border-radius:12px;
+  box-shadow:var(--shadow-s);cursor:pointer;transition:box-shadow .18s,transform .18s,border-color .18s;overflow:hidden}
+.gnode::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--c)}
+.gnode:hover{box-shadow:var(--shadow-m);transform:translateY(-1px);border-color:var(--border-2)}
+.gnode.sel{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft),var(--shadow-m)}
+.gnode .g-ic{font-size:16px;flex:0 0 auto}
+.gnode .g-tx{display:flex;flex-direction:column;min-width:0;flex:1}
+.gnode .g-tx b{font-size:12.5px;font-weight:560;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gnode .g-tx small{font-size:10px;color:var(--text-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gnode .g-badge{font-size:10px;font-weight:700;background:var(--bg);border:1px solid var(--border);
+  border-radius:20px;padding:1px 7px;color:var(--text-2);flex:0 0 auto}
+.gnode .g-tog{position:absolute;right:-1px;top:50%;transform:translateY(-50%) translateX(50%);
+  width:18px;height:18px;border-radius:50%;background:var(--panel);border:1px solid var(--border-2);
+  display:grid;place-items:center;font-size:9px;color:var(--text-2);box-shadow:var(--shadow-s);z-index:2}
+.gnode .g-tog:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+/* ============ NODOS: PAN, PINES, CONEXIONES ============ */
+.graph-scroll{cursor:grab;position:relative}
+.graph-scroll.panning{cursor:grabbing}
+.graph-scroll.panning *{user-select:none!important}
+
+/* Node con pines */
+.gnode{overflow:visible!important}
+.gnode .g-pin{position:absolute;width:13px;height:13px;border-radius:50%;
+  background:var(--panel);border:2px solid var(--border-2);cursor:crosshair;
+  transition:transform .15s,background .15s,border-color .15s;z-index:4}
+.gnode .g-pin:hover{background:var(--accent);border-color:var(--accent);
+  box-shadow:0 0 0 4px var(--accent-soft)}
+.gnode .g-pin-in{left:-7px;top:50%;transform:translateY(-50%)}
+.gnode .g-pin-out{right:-7px;top:50%;transform:translateY(-50%)}
+.gnode .g-ic{cursor:pointer;border-radius:6px;padding:2px 4px;transition:background .12s}
+.gnode .g-ic:hover{background:var(--hover);outline:1px solid var(--border-2)}
+.gnode .g-name{cursor:text;padding:1px 3px;border-radius:4px;transition:background .12s}
+.gnode .g-name:hover{background:var(--hover)}
+.gnode .g-type{cursor:text;padding:1px 3px;border-radius:4px;transition:background .12s}
+.gnode .g-type:hover{background:var(--hover)}
+.gnode .g-desc{font-size:10px;color:var(--text-2);white-space:nowrap;overflow:hidden;
+  text-overflow:ellipsis;cursor:text;padding:1px 3px;border-radius:4px;
+  transition:background .12s;max-width:180px;font-style:italic}
+.gnode .g-desc:hover{background:var(--hover)}
+.gnode.has-desc{height:auto!important;min-height:56px;padding:8px 14px;align-items:flex-start}
+.gnode.has-desc .g-ic{margin-top:2px}
+.gnode.dragging{opacity:.5;cursor:move}
+
+/* Capa de conexiones */
+.conn-layer{position:absolute;inset:0;pointer-events:none;overflow:visible;z-index:1}
+.conn-path{fill:none;stroke:var(--accent);stroke-width:2;opacity:.65;
+  transition:opacity .15s,stroke-width .15s}
+.conn-path:hover{opacity:1;stroke-width:3;stroke:#ff453a}
+.conn-hit{fill:none;stroke:transparent;stroke-width:14;pointer-events:stroke;cursor:pointer}
+.conn-drag-line{position:absolute;inset:0;pointer-events:none;z-index:20;overflow:visible}
+
+/* Hint pan */
+.pan-hint{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);
+  background:color-mix(in srgb,var(--panel) 92%,transparent);backdrop-filter:blur(14px);
+  padding:6px 14px;border-radius:20px;font-size:11px;color:var(--text-3);
+  border:1px solid var(--border);box-shadow:var(--shadow-m);pointer-events:none;
+  display:flex;align-items:center;gap:8px;z-index:5;animation:fadeOut 5s forwards;white-space:nowrap}
+@keyframes fadeOut{0%,72%{opacity:1}100%{opacity:0}}

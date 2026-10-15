@@ -1,0 +1,26 @@
+/* =========================================================
+   ARCHIVO: variables.css
+   CONTENIDO: Variables CSS para temas, colores, bordes y sombras.
+              Define los tokens visuales compartidos por la interfaz.
+   DEPENDENCIAS: ninguna
+   ========================================================= */
+:root{
+  --bg:#f2f2f7; --bg-2:#fff; --panel:#fff; --panel-2:#fbfbfd;
+  --text:#1d1d1f; --text-2:#6e6e73; --text-3:#8e8e93;
+  --border:rgba(0,0,0,.08); --border-2:rgba(0,0,0,.14);
+  --accent:#0071e3; --accent-2:#0077ed; --accent-soft:rgba(0,113,227,.1);
+  --hover:rgba(0,0,0,.045); --sel:rgba(0,113,227,.12);
+  --shadow-s:0 1px 2px rgba(0,0,0,.06),0 1px 1px rgba(0,0,0,.04);
+  --shadow-m:0 4px 16px rgba(0,0,0,.08),0 1px 3px rgba(0,0,0,.06);
+  --shadow-l:0 20px 60px rgba(0,0,0,.18),0 4px 16px rgba(0,0,0,.1);
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+}
+[data-theme="dark"]{
+  --bg:#000; --bg-2:#0a0a0b; --panel:#1c1c1e; --panel-2:#242426;
+  --text:#f5f5f7; --text-2:#a1a1a6; --text-3:#8e8e93;
+  --border:rgba(255,255,255,.09); --border-2:rgba(255,255,255,.18);
+  --accent:#0a84ff; --accent-2:#409cff; --accent-soft:rgba(10,132,255,.16);
+  --hover:rgba(255,255,255,.06); --sel:rgba(10,132,255,.2);
+  --shadow-s:0 1px 2px rgba(0,0,0,.5); --shadow-m:0 4px 16px rgba(0,0,0,.5);
+  --shadow-l:0 24px 70px rgba(0,0,0,.7);
+}
