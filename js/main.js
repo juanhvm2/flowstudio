@@ -134,5 +134,12 @@ renderInspector();
 // 5. Actualizar el indicador de estado del archivo
 updateFileStatus();
 
+// Botón de cambio de tema
+document.getElementById('btnTheme').addEventListener('click', () => {
+  state.theme = state.theme === 'dark' ? 'light' : 'dark';
+  applyTheme();
+  renderView();
+});
+
 // 6. Log de confirmación
 console.log('[FlowStudio] App inicializada con módulos ES');

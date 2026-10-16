@@ -254,20 +254,27 @@ export function showIconPopover(nodeId,x,y){
   const cur=typeOf(node.type);
   const curIcon=node.icon||cur.icon;
   const p=$('#iconPopover');
-  if(x!==null)p.style.left=Math.min(x,window.innerWidth-360)+'px';
-  if(y!==null)p.style.top=Math.min(y,window.innerHeight-500)+'px';
+  if (x !== null) p.style.left = Math.max(10, Math.min(x, window.innerWidth - 700)) + 'px';
+  if (y !== null) p.style.top  = Math.max(10, Math.min(y, window.innerHeight - 560)) + 'px';
   p.innerHTML=`
     <div class="pop-title">Icono y tipo del nodo</div>
-    <div class="pop-grid" id="iconGrid">
-      ${EMOJIS.map(e=>`<button class="pop-emoji ${e===curIcon?'sel':''}" data-emoji="${e}">${e}</button>`).join('')}
-    </div>
-    <div class="pop-title" style="margin-top:2px">Tipo de elemento</div>
-    <div class="pop-types" id="typeList">
-      ${Object.entries(tpl.types).map(([k,v])=>`
-        <button class="pop-type ${k===node.type?'sel':''}" data-type="${k}">
-          <span class="pt-ic">${v.icon}</span>
-          <span>${esc(v.label)}</span>
-        </button>`).join('')}
+    <div class="popover-icons">
+      <div class="popover-col">
+        <div class="popover-col-title">Icono</div>
+        <div class="pop-grid" id="iconGrid">
+          ${EMOJIS.map(e => `<button class="pop-emoji ${e === curIcon ? 'sel' : ''}" data-emoji="${e}">${e}</button>`).join('')}
+        </div>
+      </div>
+      <div class="popover-col">
+        <div class="popover-col-title">Tipo de elemento</div>
+        <div class="pop-types" id="typeList">
+          ${Object.entries(tpl.types).map(([k, v]) => `
+            <button class="pop-type ${k === node.type ? 'sel' : ''}" data-type="${k}">
+              <span class="pt-ic">${v.icon}</span>
+              <span>${esc(v.label)}</span>
+            </button>`).join('')}
+        </div>
+      </div>
     </div>
     <div class="pop-actions">
       <button class="btn-cancel" id="closeIconPop">Cerrar</button>
