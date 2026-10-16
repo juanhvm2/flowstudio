@@ -7,23 +7,13 @@
    ========================================================= */
 
 import {
-  state, $, $$, esc, toast, onDirty
+  state, $, $$, esc, toast, download, onDirty
 } from './core.js';
 import {
   hydrate, buildTypeSelect, renderTree, loadTemplate
 } from './tree.js';
 import { renderView } from './views.js';
 import { TEMPLATES } from './templates.js';
-
-function download(filename,text,mime){
-  const blob=new Blob([text],{type:mime+';charset=utf-8'});
-  const url=URL.createObjectURL(blob);
-  const a=document.createElement('a');
-  a.href=url;a.download=filename;
-  document.body.appendChild(a);a.click();
-  document.body.removeChild(a);
-  setTimeout(()=>URL.revokeObjectURL(url),1000);
-}
 
 export function serialize(node){
   const o={name:node.name,type:node.type};
@@ -242,9 +232,6 @@ $('#modalClose').addEventListener('click',()=>$('#overlay').classList.add('hidde
 $('#overlay').addEventListener('click',e=>{if(e.target.id==='overlay')$('#overlay').classList.add('hidden');});
 
 /* Conexión con el patrón observer:
-   Cuando cualquier módulo emita emitDirty(), actualizamos
-   el indicador de estado del archivo. */
-onDirty(() => {
-  if (state.dirty) updateFileStatus();
-  else markDirty();
-});
+   Cualquier emitDirty() de cualquier módulo marca el proyecto
+   como sucio y actualiza el indicador visual. */
+onDirty(() => markDirty());
