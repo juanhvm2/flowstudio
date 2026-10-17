@@ -18,6 +18,7 @@ import {
   startPinDrag, drawConnections
 } from './interactions.js';
 import { renderInspector } from './inspector.js';
+import { toMarkdown } from './export.js';
 
 $$('#viewTabs .tab').forEach(t => {
   t.addEventListener('click', () => {
@@ -370,8 +371,22 @@ function buildOutline(node,depth){
 
 function renderCode(host,fmt){
   let content='',label='';
-  if(fmt==='json'){content=JSON.stringify(serialize(state.root),null,2);label='JSON — estructura re-importable';}
-  if(fmt==='markdown'){content=toMarkdown(false);label='MARKDOWN — documento jerárquico';}
+  const serializeTree = (node) => {
+    const o = { name: node.name, type: node.type };
+    if (node.icon) o.icon = node.icon;
+    if (node.description) o.description = node.description;
+    if (node.links && node.links.length) o.links = [...node.links];
+    o.children = node.children.map(serializeTree);
+    return o;
+  };
+  if(fmt==='json'){
+    content = JSON.stringify(serializeTree(state.root), null, 2);
+    label = 'JSON — estructura re-importable';
+  }
+  if(fmt==='markdown'){
+    content = toMarkdown(false);
+    label = 'MARKDOWN — documento jerárquico';
+  }
   const wrap=document.createElement('div');
   wrap.style.padding='20px 22px 40px';
   wrap.innerHTML=`<div class="code-box">
